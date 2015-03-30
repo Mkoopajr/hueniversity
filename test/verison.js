@@ -8,15 +8,13 @@ var describe = lab.describe;
 var it = lab.it;
 var expect = Code.expect;
 
-var port = process.env.TESTPORT || 8000;
-
 describe('/version', function() {
 
-    it('returns version', function(done) {
+    it('returns version', function (done) {
 
-        Lib.init(port, function (err, server) {
+        Lib.init(function (err, server) {
 
-            server.inject('/version', function(response) {
+            server.inject('/version', function (response) {
 
                 expect(response.statusCode).to.equal(200);
                 expect(response.result).to.deep.equal({ version: Pkg.version });
